@@ -5,9 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class FinishPoint : MonoBehaviour
 {
+    [SerializeField] ParticleSystem finishEffect;
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            Invoke("restartGame", 0.5f);
+            finishEffect.Play();
+            Invoke("restartGame", 1f);
         }
     }
 
