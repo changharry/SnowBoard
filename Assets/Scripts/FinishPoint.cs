@@ -7,7 +7,12 @@ public class FinishPoint : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
-            SceneManager.LoadScene(0);
+            Invoke("restartGame", 0.5f);
         }
     }
+
+    private void restartGame() {
+        SceneManager.LoadScene(0);
+    }
+    
 }

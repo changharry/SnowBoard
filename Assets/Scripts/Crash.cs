@@ -5,8 +5,8 @@ using UnityEngine.SceneManagement;
 
 public class Crash : MonoBehaviour
 {
-    private void OnCollisionEnter2D(Collision2D other) {
-        if (other.collider.tag == "Ground") {
+    private void OnTriggerEnter2D(Collider2D other) {
+        if (other.tag == "Ground") {
             SceneManager.LoadScene(0);
         }
     }
