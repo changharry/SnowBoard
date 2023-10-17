@@ -19,7 +19,7 @@ public class Player : MonoBehaviour
             playerRigidbody2D.AddTorque(torqueAmount);
         }
         if (Input.GetKey(KeyCode.D)) {
-            playerRigidbody2D.AddTorque(torqueAmount);
+            playerRigidbody2D.AddTorque(-torqueAmount);
         }
     }
 }
