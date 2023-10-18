@@ -10,9 +10,12 @@ public class Player : MonoBehaviour
     float boostSpeed = 30f;
     Rigidbody2D playerRigidbody2D;
     SurfaceEffector2D surfaceEffector2D;
+    [SerializeField] ParticleSystem movingEffect;
+    Crash crash;
     // Start is called before the first frame update
     void Start()
     {
+        crash = gameObject.GetComponent<Crash>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
     }
@@ -40,5 +43,17 @@ public class Player : MonoBehaviour
         if (Input.GetKey(KeyCode.D)) {
             playerRigidbody2D.AddTorque(-torqueAmount);
         }
+    }
+
+    void OnCollisionEnter2D(Collision2D other) {
+        if (other.gameObject.tag == "Ground" && !crash.ifCrash) {
+            movingEffect.Play();
+        }
+    }
+
+    void OnCollisionExit2D(Collision2D other) {
+        if (other.gameObject.tag == "Ground") {
+            movingEffect.Stop();
+        }     
     }
 }

@@ -5,10 +5,12 @@ using UnityEngine.SceneManagement;
 
 public class Crash : MonoBehaviour
 {
+    public bool ifCrash = false;
     [SerializeField] ParticleSystem crashEffect;
     Vector3 vec = new Vector3(0,0,-100);
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Ground") {
+            ifCrash = true;
             crashEffect.Play();
             SpriteRenderer[] spriteRenderersList = (GetComponentsInChildren<SpriteRenderer>());
             foreach (SpriteRenderer i in spriteRenderersList) {
