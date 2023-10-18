@@ -5,13 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class Crash : MonoBehaviour
 {
-    public bool ifCrash = false;
+    public bool hasCrashed = false;
     [SerializeField] ParticleSystem crashEffect;
     [SerializeField] AudioClip audioClip;
     Vector3 vec = new Vector3(0,0,-100);
     private void OnTriggerEnter2D(Collider2D other) {
-        if (other.tag == "Ground") {
-            ifCrash = true;
+        if (other.tag == "Ground" && !hasCrashed) {
+            hasCrashed = true;
             GetComponent<Player>().canMove = false;
             crashEffect.Play();
             GetComponent<AudioSource>().PlayOneShot(audioClip);

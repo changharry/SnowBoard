@@ -47,7 +47,7 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground" && !GetComponent<Crash>().ifCrash) {
+        if (other.gameObject.tag == "Ground" && !GetComponent<Crash>().hasCrashed) {
             movingEffect.Play();
         }
     }
