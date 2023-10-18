@@ -11,16 +11,13 @@ public class Player : MonoBehaviour
     Rigidbody2D playerRigidbody2D;
     SurfaceEffector2D surfaceEffector2D;
     [SerializeField] ParticleSystem movingEffect;
-    Crash crash;
-    // Start is called before the first frame update
+  
     void Start()
     {
-        crash = gameObject.GetComponent<Crash>();
         playerRigidbody2D = GetComponent<Rigidbody2D>();
         surfaceEffector2D = FindObjectOfType<SurfaceEffector2D>();
     }
 
-    // Update is called once per frame
     void Update()
     {
         rotatePlayer();
@@ -46,7 +43,7 @@ public class Player : MonoBehaviour
     }
 
     void OnCollisionEnter2D(Collision2D other) {
-        if (other.gameObject.tag == "Ground" && !crash.ifCrash) {
+        if (other.gameObject.tag == "Ground" && !GetComponent<Crash>().ifCrash) {
             movingEffect.Play();
         }
     }
