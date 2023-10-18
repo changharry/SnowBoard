@@ -9,7 +9,8 @@ public class FinishPoint : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Player") {
             finishEffect.Play();
-            Invoke("restartGame", 1f);
+            GetComponent<AudioSource>().Play();
+            Invoke("restartGame", 1f); 
         }
     }
 
