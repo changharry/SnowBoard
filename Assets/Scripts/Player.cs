@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     Rigidbody2D playerRigidbody2D;
     SurfaceEffector2D surfaceEffector2D;
     [SerializeField] ParticleSystem movingEffect;
+    public bool canMove = true;
   
     void Start()
     {
@@ -20,8 +21,11 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        rotatePlayer();
-        boostPlayer();
+        if (canMove) {
+            rotatePlayer();
+            boostPlayer(); 
+        }
+       
     }
 
     void boostPlayer()

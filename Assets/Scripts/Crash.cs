@@ -12,6 +12,7 @@ public class Crash : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other) {
         if (other.tag == "Ground") {
             ifCrash = true;
+            GetComponent<Player>().canMove = false;
             crashEffect.Play();
             GetComponent<AudioSource>().PlayOneShot(audioClip);
             SpriteRenderer[] spriteRenderersList = (GetComponentsInChildren<SpriteRenderer>());
